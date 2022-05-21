@@ -1,0 +1,61 @@
+mysql> SELECT * FROM COUNTRY LIMIT 5;              
++----------------------+------------+--------------------+-------------------+
+| Country_Name         | Population | No_of_Worldcup_won | Manager           |
++----------------------+------------+--------------------+-------------------+
+| Algeria              |      39.90 |                  0 | Vahid Halilhodzic |
+| Argentina            |      42.30 |                  2 | Alejandro Sabella |
+| Australia            |      23.59 |                  0 | Ange Postecoglou  |
+| Belgium              |      11.20 |                  0 | Marc Wilmots      |
+| Bosnia & Herzegovina |       3.83 |                  0 | Safet Susic       |
++----------------------+------------+--------------------+-------------------+
+5 rows in set (0.01 sec)
+
+mysql> SELECT * FROM MATCH_RESULTS LIMIT 5;        
++----------+---------------+---------------------+----------+-------------+-------------+-------------+--------------------+----------------+
+| Match_id | Date_of_Match | Start_Time_Of_Match | Team1    | Team2       | Team1_score | Team2_score | Stadium_Name       | Host_City      |
++----------+---------------+---------------------+----------+-------------+-------------+-------------+--------------------+----------------+
+|        1 | 2014-06-12    | 17:00:00            | Brazil   | Croatia     |           3 |           1 | Arena de Sao Paulo | Sao Paulo      |
+|        2 | 2014-06-13    | 13:00:00            | Mexico   | Cameroon    |           1 |           0 | Estadio das Dunas  | Natal          |
+|        3 | 2014-06-13    | 16:00:00            | Spain    | Netherlands |           1 |           5 | Arena Fonte Nova   | Salvador       |
+|        4 | 2014-06-13    | 18:00:00            | Chile    | Australia   |           3 |           1 | Arena Pantanal     | Cuiaba         |
+|        5 | 2014-06-14    | 13:00:00            | Columbia | Greece      |           3 |           0 | Estadio Mineirao   | Belo Horizonte |
++----------+---------------+---------------------+----------+-------------+-------------+-------------+--------------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM PLAYERS LIMIT 5;              
++-----------+---------------------+-----------+------------+------------+----------+--------+------------------+------------+------------------+------------+
+| Player_id | Name                | Fname     | Lname      | DOB        | Country  | Height | Club             | Position   | Caps_for_Country | IS_CAPTAIN |
++-----------+---------------------+-----------+------------+------------+----------+--------+------------------+------------+------------------+------------+
+|      3408 | MARIO YEPES         | MARIO     | YEPES      | 1976-01-13 | Columbia |    186 | Atalanta Bergamo | Defender   |               97 |          1 |
+|     94918 | FARYD MONDRAGON     | FARYD     | MONDRAGON  | 1971-06-21 | Columbia |    191 | Deportivo Cali   | Goalkeeper |               50 |          0 |
+|    159304 | GIANLUIGI BUFFON    | GIANLUIGI | BUFFON     | 1978-01-28 | Italy    |    190 | Juventus FC      | Goalkeeper |              139 |          1 |
+|    168832 | GEORGIOS KARAGOUNIS | GEORGIOS  | KARAGOUNIS | 1977-03-06 | Greece   |    176 | Fulham FC        | Midfielder |              134 |          1 |
+|    170667 | SAMUEL ETOO         | SAMUEL    | ETOO       | 1981-03-10 | Cameroon |    181 | Chelsea FC       | Forward    |              117 |          1 |
++-----------+---------------------+-----------+------------+------------+----------+--------+------------------+------------+------------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM PLAYER_ASSISTS_GOALS LIMIT 5; 
++-----------+---------------+-------+---------+----------------+
+| Player_id | No_of_Matches | Goals | Assists | Minutes_Played |
++-----------+---------------+-------+---------+----------------+
+|    177876 |             3 |     0 |       1 |            225 |
+|    178119 |             4 |     1 |       1 |            360 |
+|    182206 |             5 |     2 |       0 |            281 |
+|    183000 |             2 |     0 |       1 |            180 |
+|    183796 |             5 |     0 |       1 |            413 |
++-----------+---------------+-------+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM PLAYER_CARDS LIMIT 5;   
++-----------+--------------+-----------+
+| Player_id | Yellow_Cards | Red_Cards |
++-----------+--------------+-----------+
+|      3408 |            1 |         0 |
+|    175512 |            1 |         0 |
+|    176644 |            1 |         0 |
+|    176971 |            2 |         0 |
+|    178119 |            2 |         0 |
++-----------+--------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> notee;

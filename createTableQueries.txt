@@ -1,0 +1,136 @@
+mysql> CREATE TABLE COUNTRY (
+    -> Country_Name VARCHAR(20) NOT NULL,
+    -> Population  DECIMAL(10,2),
+    -> No_of_Worldcup_won int,
+    -> Manager VARCHAR (20),
+    -> PRIMARY KEY ( Country_Name )
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> 
+mysql> 
+mysql> CREATE TABLE PLAYERS (
+    -> Player_id int NOT NULL,
+    -> Name VARCHAR (40),
+    -> Fname VARCHAR (20),
+    -> Lname VARCHAR (35),
+    -> DOB DATE,
+    -> Country VARCHAR(20) NOT NULL,
+    -> Height int,
+    -> Club VARCHAR(30),
+    -> Position VARCHAR(10),
+    -> Caps_for_Country int,
+    -> IS_CAPTAIN BOOLEAN,
+    -> PRIMARY KEY (Player_id),
+    -> CONSTRAINT FK_PlayerCountry FOREIGN KEY (Country)
+    -> REFERENCES COUNTRY(Country_Name)
+    -> ) ENGINE=INNODB;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> 
+mysql> CREATE TABLE MATCH_RESULTS (
+    -> Match_id int NOT NULL PRIMARY KEY,
+    -> Date_of_Match DATE,
+    -> Start_Time_Of_Match TIME,
+    -> Team1 VARCHAR(20),
+    -> Team2 VARCHAR(20),
+    -> Team1_score int,
+    -> Team2_score int,
+    -> Stadium_Name VARCHAR(35),
+    -> Host_City VARCHAR(20),
+    -> FOREIGN KEY (Team1) REFERENCES COUNTRY(Country_Name),
+    -> FOREIGN KEY (Team2) REFERENCES COUNTRY(Country_Name)
+    -> ) ENGINE=INNODB;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> 
+mysql> 
+mysql> CREATE TABLE PLAYER_CARDS (
+    -> Player_id int NOT NULL,
+    -> Yellow_Cards int,
+    -> Red_Cards int,
+    -> PRIMARY KEY (Player_id),
+    -> FOREIGN KEY (Player_id) REFERENCES PLAYERS(Player_id)
+    -> ) ENGINE=INNODB;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> 
+mysql> CREATE TABLE PLAYER_ASSISTS_GOALS (
+    -> Player_id int NOT NULL,
+    -> No_of_Matches int,
+    -> Goals int,
+    -> Assists int,
+    -> Minutes_Played int,
+    -> PRIMARY KEY (Player_id),
+    -> FOREIGN KEY (Player_id) REFERENCES PLAYERS(Player_id)
+    -> ) ENGINE=INNODB;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc COUNTRY;              
++--------------------+---------------+------+-----+---------+-------+
+| Field              | Type          | Null | Key | Default | Extra |
++--------------------+---------------+------+-----+---------+-------+
+| Country_Name       | varchar(20)   | NO   | PRI | NULL    |       |
+| Population         | decimal(10,2) | YES  |     | NULL    |       |
+| No_of_Worldcup_won | int           | YES  |     | NULL    |       |
+| Manager            | varchar(20)   | YES  |     | NULL    |       |
++--------------------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc MATCH_RESULTS;        
++---------------------+-------------+------+-----+---------+-------+
+| Field               | Type        | Null | Key | Default | Extra |
++---------------------+-------------+------+-----+---------+-------+
+| Match_id            | int         | NO   | PRI | NULL    |       |
+| Date_of_Match       | date        | YES  |     | NULL    |       |
+| Start_Time_Of_Match | time        | YES  |     | NULL    |       |
+| Team1               | varchar(20) | YES  | MUL | NULL    |       |
+| Team2               | varchar(20) | YES  | MUL | NULL    |       |
+| Team1_score         | int         | YES  |     | NULL    |       |
+| Team2_score         | int         | YES  |     | NULL    |       |
+| Stadium_Name        | varchar(35) | YES  |     | NULL    |       |
+| Host_City           | varchar(20) | YES  |     | NULL    |       |
++---------------------+-------------+------+-----+---------+-------+
+9 rows in set (0.01 sec)
+
+mysql> desc PLAYERS;              
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| Player_id        | int         | NO   | PRI | NULL    |       |
+| Name             | varchar(40) | YES  |     | NULL    |       |
+| Fname            | varchar(20) | YES  |     | NULL    |       |
+| Lname            | varchar(35) | YES  |     | NULL    |       |
+| DOB              | date        | YES  |     | NULL    |       |
+| Country          | varchar(20) | NO   | MUL | NULL    |       |
+| Height           | int         | YES  |     | NULL    |       |
+| Club             | varchar(30) | YES  |     | NULL    |       |
+| Position         | varchar(10) | YES  |     | NULL    |       |
+| Caps_for_Country | int         | YES  |     | NULL    |       |
+| IS_CAPTAIN       | tinyint(1)  | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql> desc PLAYER_ASSISTS_GOALS; 
++----------------+------+------+-----+---------+-------+
+| Field          | Type | Null | Key | Default | Extra |
++----------------+------+------+-----+---------+-------+
+| Player_id      | int  | NO   | PRI | NULL    |       |
+| No_of_Matches  | int  | YES  |     | NULL    |       |
+| Goals          | int  | YES  |     | NULL    |       |
+| Assists        | int  | YES  |     | NULL    |       |
+| Minutes_Played | int  | YES  |     | NULL    |       |
++----------------+------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc PLAYER_CARDS; 
++--------------+------+------+-----+---------+-------+
+| Field        | Type | Null | Key | Default | Extra |
++--------------+------+------+-----+---------+-------+
+| Player_id    | int  | NO   | PRI | NULL    |       |
+| Yellow_Cards | int  | YES  |     | NULL    |       |
+| Red_Cards    | int  | YES  |     | NULL    |       |
++--------------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> notee;
