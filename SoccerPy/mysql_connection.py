@@ -4,10 +4,10 @@ import mysql.connector
 def mysqlconnect():
     try:
         db_connection = mysql.connector.connect(
-            host="acadmysqldb001p.uta.edu",
+            host="",
             user="",
             password="",
-            database="axp9807"
+            database=""
         )
     # If connection is not successful
     except:
